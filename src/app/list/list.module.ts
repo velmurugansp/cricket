@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
+import { UpdateScoreComponent } from './update-score/update-score.component';
 
 @NgModule({
   imports: [
@@ -15,9 +16,13 @@ import { ListPage } from './list.page';
       {
         path: '',
         component: ListPage
+      },
+      {
+        path: 'update-score',
+        component: UpdateScoreComponent
       }
     ])
   ],
-  declarations: [ListPage]
+  declarations: [ListPage, UpdateScoreComponent]
 })
 export class ListPageModule {}

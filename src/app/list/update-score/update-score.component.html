@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Matches
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<!--
+<ion-list>
+    <ion-item *ngFor="let entry of form">
+      <ion-label>{{entry.val}}</ion-label>
+      <ion-checkbox slot="end" [(ngModel)]="entry.isChecked"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+<ion-list>
+  <ion-radio-group>
+    <ion-list-header>
+      <ion-label>Name</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Biff</ion-label>
+      <ion-radio slot="start" value="biff" checked></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Griff</ion-label>
+      <ion-radio slot="start" value="griff"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Buford</ion-label>
+      <ion-radio slot="start" value="buford"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+</ion-list>
+-->
+<div>
+    <h4>Over Ball</h4>
+    <span>
+      <label for="over">Over</label>
+      <select type="checkbox" name="over" id="over">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>    
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+        <option value="16">16</option>
+        <option value="17">17</option>
+        <option value="18">18</option>
+        <option value="19">19</option>
+        <option value="20">20</option>   
+      </select>
+    </span>
+    <span>
+      <label for="ball">Ball</label>
+      <select type="checkbox" name="ball" id="ball">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>       
+      </select>
+    </span>
+</div>
+<div>
+  <h4>Run</h4>
+  <span>
+    <input type="radio" name="run" id="run-1" />
+    <label for="run-1">1</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-2" />
+    <label for="run-2">2</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-3" />
+    <label for="run-3">3</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-4" />
+    <label for="run-4">4</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-5" />
+    <label for="run-5">5</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-6" />
+    <label for="run-6">6</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-7" />
+    <label for="run-7">7</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-8" />
+    <label for="run-8">8</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-four" />
+    <label for="run-four">Four</label>
+  </span>
+  <span>
+    <input type="radio" name="run" id="run-six" />
+    <label for="run-six">Six</label>
+  </span>
+</div>
+<div>
+  <h4>Extra</h4>
+  <span>
+    <ion-checkbox color="secondary" name="extra"></ion-checkbox>
+    <!-- <input type="checkbox" name="extra" id="extra-wide" /> -->
+    <label for="extra-wide">Wide</label>
+  </span>
+  <span>
+    <input type="checkbox" name="extra" id="extra-no-ball" />
+    <label for="extra-no-ball">No Ball</label>
+  </span>
+  <span>
+    <input type="checkbox" name="extra" id="extra-free-hit" />
+    <label for="extra-free-hit">Free Hit</label>
+  </span>
+  <span>
+    <input type="checkbox" name="extra" id="extra-byes" />
+    <label for="extra-byes">Byes</label>
+  </span>
+  <span>
+    <input type="checkbox" name="extra" id="extra-leg-byes" />
+    <label for="extra-leg-byes">Leg Byes</label>
+  </span>
+</div>
+<div>
+    <h4>Wicket</h4>
+    <span>
+      <input type="checkbox" name="extra" id="wicket-bowled" />
+      <label for="wicket-bowled">Bowled</label>
+    </span>
+    <span>
+      <input type="checkbox" name="extra" id="wicket-caught" />
+      <label for="wicket-caught">Caught</label>
+    </span>
+    <span>
+      <input type="checkbox" name="extra" id="wicket-lbw" />
+      <label for="wicket-lbw">LBW</label>
+    </span>
+    <span>
+      <input type="checkbox" name="extra" id="wicket-stumped" />
+      <label for="wicket-stumped">Stumped</label>
+    </span>
+    <span>
+      <input type="checkbox" name="extra" id="wicket-run-out" />
+      <label for="wicket-">Run out</label>
+    </span>
+    <span>
+      <input type="checkbox" name="extra" id="wicket-hit-wicket" />
+      <label for="wicket-hit-wicket">Hit Wicket</label>
+    </span>
+</div>
+<div>
+  <input type="submit" value="Update" />
+</div>
