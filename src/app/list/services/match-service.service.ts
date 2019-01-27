@@ -23,4 +23,20 @@ export class MatchServiceService {
       return result;
     })) 
   }
+  updateScore(){
+    let param = {
+      "name": "morpheus",
+      "job": "leader"
+    }
+    let endpoint = "https://reqres.in/api/users";
+    let headers = new Headers({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    });
+    let options = new RequestOptions({ headers: headers});
+    return this.http.post(endpoint, param, options).pipe(map(response => {
+      result = response;
+      return result;
+    }));
+  }
 }

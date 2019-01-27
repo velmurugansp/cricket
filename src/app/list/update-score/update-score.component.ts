@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatchServiceService} from './../services/match-service.service'
 
 @Component({
   selector: 'app-update-score',
@@ -7,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateScoreComponent implements OnInit {
 
-  constructor() { }
-  
+  constructor(private MatchService:MatchServiceService) { }
+
   public form = [
     { val: 'Pepperoni', isChecked: true },
     { val: 'Sausage', isChecked: false },
@@ -16,6 +17,8 @@ export class UpdateScoreComponent implements OnInit {
   ];
 
   ngOnInit() {
+    this.MatchService.updateScore().subscribe((result) => {
+      console.log(result);  
+    });
   }
-
 }
