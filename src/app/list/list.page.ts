@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {MatchServiceService} from './services/match-service.service'
 
 @Component({
   selector: 'app-list',
@@ -19,19 +20,25 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
-  public items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor() {
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-      });
-    }
+  public items= [];
+  result={};
+  constructor(private MatchServiceService:MatchServiceService) {    
+    // for (let i = 1; i < 11; i++) {
+    //   this.items.push({
+    //     title: 'Item ' + i,
+    //     note: 'This is item #' + i,
+    //     icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    //   });
+    // }
   }
-
+  
   ngOnInit() {
+    this.MatchServiceService.getCricket().subscribe((result) => {
+        this.items = result.json().data;
+        console.log("this.items",result.json());
+    });
   }
+  
   // add back when alpha.4 is out
   // navigate(item) {
   //   this.router.navigate(['/list', JSON.stringify(item)]);
