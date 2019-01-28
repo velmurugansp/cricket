@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, ReactiveFormsModule, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatchServiceService} from './../services/match-service.service'
 
 @Component({
@@ -6,19 +7,41 @@ import {MatchServiceService} from './../services/match-service.service'
   templateUrl: './update-score.component.html',
   styleUrls: ['./update-score.component.scss']
 })
-export class UpdateScoreComponent implements OnInit {
 
-  constructor(private MatchService:MatchServiceService) { }
+export class UpdateScoreComponent {
+  
+  public updateScoreForm: FormGroup;
 
-  public form = [
-    { val: 'Pepperoni', isChecked: true },
-    { val: 'Sausage', isChecked: false },
-    { val: 'Mushroom', isChecked: false }
-  ];
-
-  ngOnInit() {
-    this.MatchService.updateScore().subscribe((result) => {
-      console.log(result);  
+  constructor(private MatchService: MatchServiceService, public formBuilder: FormBuilder) {
+    this.updateScoreForm = formBuilder.group({
+      over: [1, Validators.required],
+      ball: ['', Validators.required],
+      run: ['', Validators.required],
+      extra: ['', Validators.required],
+      wicket: ['', Validators.required],
+      fielder: ['', Validators.required]
     });
   }
+
+  updateScore1(): void {
+    console.log(this.updateScoreForm.value);
+  }
+
+  // ngOnInit() {
+  //   this.MatchService.updateScore().subscribe((result) => {
+  //     console.log(result);  
+  //   });
+  // }
+
+  // updateScoreForm = new FormGroup({
+  //   over: new FormControl(),
+  //   last: new FormControl(),
+  //   ball: new FormControl(),
+  //   run: new FormControl(),
+  //   extra: new FormControl(),
+  //   wicket: new FormControl(),
+  //   fielder: new FormControl()
+  // });
+
+  
 }

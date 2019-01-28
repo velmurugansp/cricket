@@ -8,11 +8,12 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-<div>
+<form [formGroup]="updateScoreForm">
+  <div>
     <h4>Over</h4>
     <span>
       <ion-item>
-        <ion-select name="over">
+        <ion-select formControlName="over">
           <ion-select-option value="1" selected>1</ion-select-option>
           <ion-select-option value="2">2</ion-select-option>
           <ion-select-option value="3">3</ion-select-option>
@@ -40,157 +41,176 @@
   <div>
     <h4>Ball</h4>
     <ion-list>
-    <ion-radio-group>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="ball" value="1"></ion-radio>
-        <ion-label>1</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="ball" value="2"></ion-radio>
-        <ion-label>2</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="ball" value="3"></ion-radio>
-        <ion-label>3</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="ball" value="4"></ion-radio>
-        <ion-label>4</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="ball" value="5"></ion-radio>
-        <ion-label>5</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="ball" value="6"></ion-radio>
-        <ion-label>6</ion-label>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
-</div>
-<div>
-  <h4>Run</h4>
-  <ion-list>
-    <ion-radio-group>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="0"></ion-radio>
-        <ion-label>0</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="1"></ion-radio>
-        <ion-label>1</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="2"></ion-radio>
-        <ion-label>2</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="3"></ion-radio>
-        <ion-label>3</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="4"></ion-radio>
-        <ion-label>4</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="5"></ion-radio>
-        <ion-label>5</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="6"></ion-radio>
-        <ion-label>6</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="7"></ion-radio>
-        <ion-label>7</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="8"></ion-radio>
-        <ion-label>8</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="four"></ion-radio>
-        <ion-label>Four</ion-label>
-      </ion-item>
-      <ion-item class="inline-form-element">
-        <ion-radio color="secondary" name="run" value="six"></ion-radio>
-        <ion-label>Six</ion-label>
-      </ion-item>
-    </ion-radio-group>
-  </ion-list>
-</div>
-<div>
-  <h4>Extra</h4>
-  <span>
-    <ion-item class="inline-form-element">
-      <ion-checkbox color="secondary" name="extra" value="0"></ion-checkbox>
-      <ion-label>Wide</ion-label>
-    </ion-item>
-  </span>
-  <span>
-    <ion-item class="inline-form-element">
-      <ion-checkbox color="secondary" name="extra" value="1"></ion-checkbox>
-      <ion-label>No Ball</ion-label>
-    </ion-item>
-  </span>
-  <span>
-    <ion-item class="inline-form-element">
-      <ion-checkbox color="secondary" name="extra" value="2"></ion-checkbox>
-      <ion-label>Free Hit</ion-label>
-    </ion-item>
-  </span>
-  <span>
-    <ion-item class="inline-form-element">
-      <ion-checkbox color="secondary" name="extra" value="3"></ion-checkbox>
-      <ion-label>Byes</ion-label>
-    </ion-item>
-  </span>
-  <span>
-    <ion-item class="inline-form-element">
-      <ion-checkbox color="secondary" name="extra" value="4"></ion-checkbox>
-      <ion-label>Leg Byes</ion-label>
-    </ion-item>
-  </span>
-</div>
-<div>
-    <h4>Wicket</h4>
-    <span>
-      <ion-item class="inline-form-element">
-        <ion-checkbox color="secondary" name="wicket" value="0"></ion-checkbox>
-        <ion-label>Bowled</ion-label>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item class="inline-form-element">
-        <ion-checkbox color="secondary" name="wicket" value="1"></ion-checkbox>
-        <ion-label>Caught</ion-label>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item class="inline-form-element">
-        <ion-checkbox color="secondary" name="wicket" value="2"></ion-checkbox>
-        <ion-label>LBW</ion-label>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item class="inline-form-element">
-        <ion-checkbox color="secondary" name="wicket" value="3"></ion-checkbox>
-        <ion-label>Stumped</ion-label>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item class="inline-form-element">
-        <ion-checkbox color="secondary" name="wicket" value="4"></ion-checkbox>
-        <ion-label>Run out</ion-label>
-      </ion-item>
-    </span>
-    <span>
+      <ion-radio-group [formControl]="updateScoreForm.controls['ball']">
         <ion-item class="inline-form-element">
-          <ion-checkbox color="secondary" name="wicket" value="5"></ion-checkbox>
-          <ion-label>Hit Wicket</ion-label>
+          <ion-radio color="secondary" value="1"></ion-radio>
+          <ion-label>1</ion-label>
         </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="2"></ion-radio>
+          <ion-label>2</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="3"></ion-radio>
+          <ion-label>3</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="4"></ion-radio>
+          <ion-label>4</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="5"></ion-radio>
+          <ion-label>5</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="6"></ion-radio>
+          <ion-label>6</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+  <div>
+    <h4>Run</h4>
+    <ion-list>
+      <ion-radio-group [formControl]="updateScoreForm.controls['run']">
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="0"></ion-radio>
+          <ion-label>0</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="1"></ion-radio>
+          <ion-label>1</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="2"></ion-radio>
+          <ion-label>2</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="3"></ion-radio>
+          <ion-label>3</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="4"></ion-radio>
+          <ion-label>4</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="5"></ion-radio>
+          <ion-label>5</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="6"></ion-radio>
+          <ion-label>6</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="7"></ion-radio>
+          <ion-label>7</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="8"></ion-radio>
+          <ion-label>8</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="four"></ion-radio>
+          <ion-label>Four</ion-label>
+        </ion-item>
+        <ion-item class="inline-form-element">
+          <ion-radio color="secondary" value="six"></ion-radio>
+          <ion-label>Six</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+  <div>
+    <h4>Extra</h4>
+    <span>
+      <ion-item class="inline-form-element">
+        <ion-checkbox color="secondary" formControlName="extra" value="0"></ion-checkbox>
+        <ion-label>Wide</ion-label>
+      </ion-item>
     </span>
-</div>
-<div>
-  <ion-button color="primary" type="submit">Update</ion-button>
-</div>
+    <span>
+      <ion-item class="inline-form-element">
+        <ion-checkbox color="secondary" formControlName="extra" value="1"></ion-checkbox>
+        <ion-label>No Ball</ion-label>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item class="inline-form-element">
+        <ion-checkbox color="secondary" formControlName="extra" value="2"></ion-checkbox>
+        <ion-label>Free Hit</ion-label>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item class="inline-form-element">
+        <ion-checkbox color="secondary" formControlName="extra" value="3"></ion-checkbox>
+        <ion-label>Byes</ion-label>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item class="inline-form-element">
+        <ion-checkbox color="secondary" formControlName="extra" value="4"></ion-checkbox>
+        <ion-label>Leg Byes</ion-label>
+      </ion-item>
+    </span>
+  </div>
+  <div>
+      <h4>Wicket</h4>
+      <span>
+        <ion-item class="inline-form-element">
+          <ion-checkbox color="secondary" formControlName="wicket" value="0"></ion-checkbox>
+          <ion-label>Bowled</ion-label>
+        </ion-item>
+      </span>
+      <span>
+        <ion-item class="inline-form-element">
+          <ion-checkbox color="secondary" formControlName="wicket" value="1"></ion-checkbox>
+          <ion-label>Caught</ion-label>
+        </ion-item>
+      </span>
+      <span>
+        <ion-item class="inline-form-element">
+          <ion-checkbox color="secondary" formControlName="wicket" value="2"></ion-checkbox>
+          <ion-label>LBW</ion-label>
+        </ion-item>
+      </span>
+      <span>
+        <ion-item class="inline-form-element">
+          <ion-checkbox color="secondary" formControlName="wicket" value="3"></ion-checkbox>
+          <ion-label>Stumped</ion-label>
+        </ion-item>
+      </span>
+      <span>
+        <ion-item class="inline-form-element">
+          <ion-checkbox color="secondary" formControlName="wicket" value="4"></ion-checkbox>
+          <ion-label>Run out</ion-label>
+        </ion-item>
+      </span>
+      <span>
+          <ion-item class="inline-form-element">
+            <ion-checkbox color="secondary" formControlName="wicket" value="5"></ion-checkbox>
+            <ion-label>Hit Wicket</ion-label>
+          </ion-item>
+      </span>
+      <div>
+        <ion-item>
+          <ion-label>Fielder</ion-label>
+          <ion-select formControlName="fielder">
+            <ion-select-option value="player-1" selected>1</ion-select-option>
+            <ion-select-option value="2">Player 2</ion-select-option>
+            <ion-select-option value="3">Player 3</ion-select-option>
+            <ion-select-option value="4">Player 4</ion-select-option>
+            <ion-select-option value="5">Player 5</ion-select-option>
+            <ion-select-option value="6">Player 6</ion-select-option>
+            <ion-select-option value="7">Player 7</ion-select-option>
+            <ion-select-option value="8">Player 8</ion-select-option>
+            <ion-select-option value="9">Player 9</ion-select-option>
+            <ion-select-option value="10">Player 10</ion-select-option>
+            <ion-select-option value="11">Player 11</ion-select-option>     
+          </ion-select>
+        </ion-item>
+      </div>
+  </div>
+  <div>
+    <ion-button color="primary" expand="block" (click)="updateScore1()">Update</ion-button>
+  </div>
+</form>
