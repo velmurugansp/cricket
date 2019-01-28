@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 import { ViewersPage } from './viewers';
 
 @NgModule({
@@ -7,7 +9,13 @@ import { ViewersPage } from './viewers';
     ViewersPage,
   ],
   imports: [
-    IonicPageModule.forChild(ViewersPage),
-  ],
+    IonicModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ViewersPage
+      }
+    ])
+  ]
 })
 export class ViewersPageModule {}

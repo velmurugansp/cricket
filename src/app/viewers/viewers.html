@@ -1,9 +1,13 @@
-<ion-header id="viewersPage-header">
-  <ion-navbar color="dark">
-    <ion-title>Tournent Name</ion-title>
-  </ion-navbar>
+<ion-header>
+  <ion-toolbar color="secondarydark">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Tournament Name
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
-
 
 <ion-content id="viewersPage-content">
   <div class="card">
@@ -73,18 +77,16 @@
   </div>
 
   <div class="card" id="teamDataContainer">
-    <ion-toolbar no-border-top color="secondarydark">
-      <ion-segment [(ngModel)]="teamData" class="teamDataHeader">
+      <ion-segment (ionChange)="segmentChanged($event)" class="teamDataHeader">
         <ion-segment-button value="teamA">
-          Team A
+          <ion-label> Team A </ion-label>
         </ion-segment-button>
         <ion-segment-button value="teamB">
-          Team B
+          <ion-label>Team B</ion-label>
         </ion-segment-button>
       </ion-segment>
-    </ion-toolbar>
 
-    <div [ngSwitch]="teamData" class="teamScoreBoard">
+    <!-- <div [ngSwitch]="teamData" class="teamScoreBoard">
       <ion-list *ngSwitchCase="'teamA'">
         <table class="battingDataTable">
           <tbody>
@@ -410,6 +412,6 @@
           </tbody>
         </table>
       </ion-list>
-    </div>
+    </div> -->
   </div>
 </ion-content>

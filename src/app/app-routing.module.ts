@@ -14,6 +14,18 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
+  },  
+  {
+    path: 'login',
+    loadChildren: './login/login.module#LoginPageModule'
+  },  
+  {
+    path: 'sign-up',
+    loadChildren: './signup/signup.module#SignupPageModule'
+  },  
+  {
+    path: 'viewers',
+    loadChildren: './viewers/viewers.module#ViewersPageModule'
   }
 ];
 
