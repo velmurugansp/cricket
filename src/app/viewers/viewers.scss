@@ -1,0 +1,284 @@
+.primary {
+  background: #017aff !important;
+  color: #ffffff !important;
+}
+
+.secondary {
+  background: #6b747c !important;
+  color: #ffffff !important;
+}
+
+.success {
+  background: #28a745 !important;
+  color: #ffffff !important;
+}
+
+.danger {
+  background: #dc3545 !important;
+  color: #ffffff !important;
+}
+
+.warning {
+  background: #ffc106 !important;
+  color: #ffffff !important;
+}
+
+.info {
+  background: #16a2b8 !important;
+  color: #ffffff !important;
+}
+
+.light {
+  background: #f8f9fa !important;
+  color: #333333 !important;
+}
+
+.dark {
+  background: #16161b !important;
+  color: #ffffff !important;
+}
+
+.secondarydark {
+  background: #212227 !important;
+  color: #ffffff !important;
+}
+
+.white {
+  background: #ffffff !important;
+  color: #333333 !important;
+}
+
+#viewersPage-header {
+  ion-navbar {
+    text-align: center;
+  }
+}
+
+#viewersPage-content {
+  background: #222;
+
+  div.card * {
+    color: #ffffff;
+    z-index: 1;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  div.card,
+  div.batsmanScoreCard {
+    height: 25vh;
+    box-shadow: 0px 15px 10px -15px #111;
+
+    div.blurredImg {
+      position: absolute;
+      background: url('../../assets/imgs/loginPage.jpg') no-repeat;
+      background-size: 100% 100%;
+      filter: blur(2px);
+      width: 100%;
+      height: 25vh;
+      z-index: -1;
+    }
+
+    ion-card-header {
+      font-size: 1em;
+      text-align: center;
+      padding: 10px 5px;
+    }
+
+    ion-grid {
+      height: 15vh;
+
+      ion-row#teamScore {
+        flex-grow: 1;
+        align-items: center;
+
+        ion-col {
+          max-width: 50%;
+
+          div.team-score {
+            display: inline-block;
+            position: absolute;
+            top: 25%;
+            width: 23vw;
+
+            span {
+              padding: 5px;
+            }
+          }
+
+          ion-img {
+            background: #333333;
+            border: 2px #222222 solid;
+            border-radius: 50%;
+          }
+        }
+
+        ion-col.teamScore-left {
+          text-align: right;
+
+          div.team-score {
+            left: 0;
+          }
+        }
+
+        ion-col.teamScore-right {
+          text-align: left;
+
+          div.team-score {
+            right: 0;
+          }
+        }
+
+        div.circle-vs {
+          height: max-content;
+          background: #333333;
+          border: 2px #222222 solid;
+          padding: 5px;
+          border-radius: 50%;
+        }
+      }
+
+      ion-row {
+
+        div.matchStatus,
+        div.tossStatus {
+          width: 100%;
+          font-size: 1em;
+          text-align: center;
+          padding: 5px;
+          padding-top: 15px;
+        }
+      }
+    }
+
+    button.refreshTeamScore {
+      position: absolute;
+      display: inline-block;
+      font-size: 1.5em;
+      padding: 5px;
+      right: 5px;
+      top: 5px;
+    }
+  }
+
+  div.batsmanScoreCard {
+    * {
+      color: #ffffff;
+    }
+
+    div.blurredImg {
+      position: absolute;
+      background: url('../../assets/imgs/battingScoreBG.jpg') no-repeat;
+      background-size: 100% 100%;
+      filter: blur(2px);
+      width: 100%;
+      height: 25vh;
+      z-index: -1;
+    }
+
+    div.matchStatus {
+      div.scoreperOver {
+        display: inline-block;
+        border-top: solid 1px #999999;
+        border-bottom: solid 1px #999999;
+        border-image: linear-gradient(to right, red, #FFEB3B) 1 10%;
+        padding: 0 10px;
+
+        div {
+          display: inline-block;
+          background: #ffffff;
+          border: 1px solid #ffffff;
+          border-radius: 50%;
+          color: #333333;
+          width: 25px;
+          height: 25px;
+          padding: 3px;
+          margin: 5px;
+        }
+      }
+    }
+  }
+
+  ion-toolbar.toolbar-md {
+    min-height: auto;
+  }box-shadow:         3px 3px 5px 6px #ccc;
+
+  div#teamDataContainer div.teamScoreBoard {
+    ion-list {
+      ion-item.item-md {
+        background: #666666;
+
+        ion-label.label-md {
+          margin: 10px;
+        }
+      }
+
+      table.battingDataTable,
+      table.bowlingDataTable {
+        width: calc(100vw - 0.1px);
+
+        tbody {
+          border: 1px solid #333;
+          text-align: center;
+
+          tr:nth-child(even) {
+            background-color: #f2f2f2;
+          }
+
+          tr:nth-child(odd) {
+            background-color: #f8f9fa;
+          }
+
+          tr {
+            border-bottom: 1px solid #999;
+
+            td,
+            th {
+              padding: 5px;
+              border: none !important;
+              width: 25px;
+            }
+            td {
+              color: #222222;
+            }
+
+            th.playersName {
+              width: 60%;
+              padding-left: 10px;
+            }
+
+            td.playersName {
+              text-align: left;
+              padding-left: 10px;
+
+              div.wicketInfo {
+                font-size: 0.7em;
+                padding: 3px;
+                padding-left: 0px;
+                color: #666666;
+              }
+            }
+          }
+
+          tr.tableHeader {
+            border: 1px solid #333;
+            background: #333333;
+            color: #f8f9fa;
+          }
+        }
+      }
+
+      table.bowlingDataTable {
+        tbody {
+          tr {
+            th.playersName {
+              width: 59%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

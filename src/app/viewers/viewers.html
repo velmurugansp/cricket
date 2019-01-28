@@ -1,0 +1,415 @@
+<ion-header id="viewersPage-header">
+  <ion-navbar color="dark">
+    <ion-title>Tournent Name</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content id="viewersPage-content">
+  <div class="card">
+    <div class="blurredImg"></div>
+    <ion-card-header>Stadium Name</ion-card-header>
+    <ion-grid>
+      <ion-row id="teamScore">
+        <ion-col class="teamScore-left">
+          <div class="team-score">
+            <div><span>55</span><span>-</span><span>5</span></div>
+            <div>10.2 Overs</div>
+          </div>
+          <ion-img src="../../assets/imgs/ipl-chennai-super-kings-logo.png" width="70" height="70"></ion-img>
+        </ion-col>
+        <div class="circle-vs">VS</div>
+        <ion-col class="teamScore-right">
+          <div class="team-score">
+            <div><span>00</span><span>-</span><span>0</span></div>
+            <div>0.0 Overs</div>
+          </div>
+          <ion-img src="../../assets/imgs/ipl-mumbai-indians-logo.png" width="70" height="70"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <div class="tossStatus hide">Team A won the toss and elected to Bat</div>
+        <div class="matchStatus">India needs 35 runs in 9 Balls to win</div>
+      </ion-row>
+      <button class="refreshTeamScore ion-button icon-only button-clear button-clear-md">
+        <ion-icon name="refresh-circle"></ion-icon>
+      </button>
+    </ion-grid>
+  </div>
+
+  <div class="card batsmanScoreCard">
+    <div class="blurredImg"></div>
+    <ion-card-header>Patnership <span>81/145</span> balls</ion-card-header>
+    <ion-grid>
+      <ion-row id="teamScore">
+        <ion-col class="teamScore-left">
+          <div class="team-score">
+            <div>MS Dhoni</div><span>55/85</span>
+          </div>
+          <ion-img src="../../assets/imgs/player_dhoni.jpg" width="70" height="70"></ion-img>
+        </ion-col>
+        <div class="circle-vs">VS</div>
+        <ion-col class="teamScore-right">
+          <div class="team-score">
+            <div>Virath Kholi</div>
+            <div>26/60</div>
+          </div>
+          <ion-img src="../../assets/imgs/player_Kholi.jpg" width="70" height="70"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <div class="matchStatus">
+          <div class="scoreperOver">
+            <div class="success">6</div>
+            <div>0</div>
+            <div>2</div>
+            <div class="danger">W</div>
+            <div>1</div>
+            <div>1</div>
+          </div>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="card" id="teamDataContainer">
+    <ion-toolbar no-border-top color="secondarydark">
+      <ion-segment [(ngModel)]="teamData" class="teamDataHeader">
+        <ion-segment-button value="teamA">
+          Team A
+        </ion-segment-button>
+        <ion-segment-button value="teamB">
+          Team B
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+
+    <div [ngSwitch]="teamData" class="teamScoreBoard">
+      <ion-list *ngSwitchCase="'teamA'">
+        <table class="battingDataTable">
+          <tbody>
+            <tr class="tableHeader">
+              <th class="playersName">Batting</th>
+              <th>R </th>
+              <th>B </th>
+              <th>4s</th>
+              <th>6s</th>
+              <th>S/R</th>
+            </tr>
+            <tr>
+              <td class="playersName">Player 01 <div class="wicketInfo">c Dinesh Kumar, b Buvaneshwar Kumar</div></td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 02</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 03</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 04</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 05</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 06</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 07</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 08</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 09</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 10</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 11</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="bowlingDataTable">
+          <tbody>
+            <tr class="tableHeader">
+              <th class="playersName">Bowling</th>
+              <th>O </th>
+              <th>M </th>
+              <th>R </th>
+              <th>W</th>
+              <th>Eco</th>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 01</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 02</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 03</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 04</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 05</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 06</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'teamB'">
+        <table class="battingDataTable">
+          <tbody>
+            <tr class="tableHeader">
+              <th class="playersName">Batting</th>
+              <th>R </th>
+              <th>B </th>
+              <th>4s</th>
+              <th>6s</th>
+              <th>S/R</th>
+            </tr>
+            <tr>
+              <td class="playersName">Player 01</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 02</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 03</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 04</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 05</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 06</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 07</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 08</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 09</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 10</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+            <tr>
+              <td class="playersName">Player 11</td>
+              <td>100</td>
+              <td>105</td>
+              <td>10</td>
+              <td>6</td>
+              <td>95.23</td>
+            </tr>
+          </tbody>
+        </table>
+        <table class="bowlingDataTable">
+          <tbody>
+            <tr class="tableHeader">
+              <th class="playersName">Bowling</th>
+              <th>O </th>
+              <th>M </th>
+              <th>R </th>
+              <th>W</th>
+              <th>Eco</th>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 01</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 02</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 03</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 04</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 05</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+            <tr>
+              <td class="playersName">Bowler 06</td>
+              <td>10.0</td>
+              <td>1</td>
+              <td>46</td>
+              <td>2</td>
+              <td>4.60</td>
+            </tr>
+          </tbody>
+        </table>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

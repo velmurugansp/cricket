@@ -1,0 +1,30 @@
+<ion-content id="LoginForm">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label stacked>Mobile Number</ion-label>
+        <ion-input type="tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button block icon-start color="primary" large (click)="login()">
+              <ion-icon name="log-in"></ion-icon>
+              Login
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block icon-start color="secondary" large (click)="singup()">
+              <ion-icon name="md-person-add"></ion-icon>
+              Signup
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

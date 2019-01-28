@@ -1,0 +1,34 @@
+<ion-content id="singupForm">
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label stacked>Mobile Number</ion-label>
+        <ion-input type="tel"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Re-type Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <button ion-button block icon-start color="primary" large (click)="SingupNewUser()">
+              <ion-icon name="md-person-add"></ion-icon>
+              Signup
+            </button>
+          </ion-col>
+          <ion-col col-6>
+            <button ion-button block icon-start color="secondary" large (click)="Cancelsignup()">
+              <ion-icon name="md-person-add"></ion-icon>
+              Cancel
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
