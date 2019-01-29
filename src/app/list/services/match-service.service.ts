@@ -12,7 +12,7 @@ export class MatchServiceService {
   constructor(private http:Http) { }
 
   getCricket(){  
-    let endpoint = "http://192.168.100.172/cricscore/public/matches";
+    let endpoint = "https://reqres.in/api/users?page=2";
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -21,9 +21,9 @@ export class MatchServiceService {
     return this.http.get(endpoint, options).pipe(map(response => {
       result = response;
       return result;
-    })) 
+    }))
   }
-  updateScore(params){
+  updateScoreService(params){
     console.log(params);
     params = {
       "tournament_id": 4,
