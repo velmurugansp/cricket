@@ -12,7 +12,7 @@ export class MatchServiceService {
   constructor(private http:Http) { }
 
   getCricket(){  
-    let endpoint = "https://reqres.in/api/users?page=2";
+    let endpoint = "http://192.168.100.172/cricscore/public/matches";
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
