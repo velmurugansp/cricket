@@ -24,7 +24,7 @@ export class UpdateScoreComponent {
   }
 
   updateScore1(): void {
-    console.log(this.updateScoreForm.value);
+    this.MatchService.updateScore(this.updateScoreForm.value).subscribe(data=>{});
   }
 
   // ngOnInit() {
@@ -43,5 +43,5 @@ export class UpdateScoreComponent {
   //   fielder: new FormControl()
   // });
 
-  
+ 
 }
