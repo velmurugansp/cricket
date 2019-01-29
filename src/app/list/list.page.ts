@@ -34,7 +34,7 @@ export class ListPage implements OnInit {
   
   ngOnInit() {
     this.MatchServiceService.getCricket().subscribe((result) => {
-        this.items = result.json().data;
+        this.items = result.json().content;
         console.log("this.items",result.json());
     });
   }

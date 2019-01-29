@@ -13,9 +13,9 @@
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.first_name}}
+      {{item.match_id}}
       <div class="item-note" slot="end">
-        {{item.last_name}}
+        {{item.match_date}}
       </div>
     </ion-item>
   </ion-list>
