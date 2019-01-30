@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, FormControl, FormArray, FormGroup, Validators} from '@angular/forms';
 import {MatchServiceService} from './../services/match-service.service'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-update-score',
@@ -21,7 +22,10 @@ export class UpdateScoreComponent {
     { id: 7, name: 'Leg Byes' }
   ];
 
-  constructor(private MatchService: MatchServiceService, public formBuilder: FormBuilder) {
+  paramvalue:any;
+  match_id: number;
+  tournament_id: number;
+  constructor(private MatchService: MatchServiceService, private route: ActivatedRoute, public formBuilder: FormBuilder) {
     
     const extraControls = this.extras.map(c => new FormControl(false));
     extraControls[0].setValue(true); // Set the first checkbox to true (checked)
@@ -130,11 +134,15 @@ export class UpdateScoreComponent {
     });
   }
 
-  // ngOnInit() {
-  //   this.MatchService.updateScoreService(params).subscribe((result) => {
-  //     console.log(result);  
-  //   });
-  // }
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.paramvalue = params.id.split("_");    
+      this.tournament_id = this.paramvalue[0]; 
+      this.match_id = this.paramvalue[1]; 
+      console.log(this.match_id,"match_id");
+      console.log(this.tournament_id,"tournament_id");
+    });
+  }
 
   // updateScoreForm = new FormGroup({
   //   over: new FormControl(),
