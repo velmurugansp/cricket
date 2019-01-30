@@ -23,9 +23,9 @@ export class MatchServiceService {
       return result;
     }))
   }
-  updateScoreService(params){
-    console.log(params);
-    params = {
+  updateScoreService(param){
+    console.log(param)
+    let params = {
       "tournament_id": 4,
       "match_id": 1,
       "innings_no": 1,
@@ -39,13 +39,15 @@ export class MatchServiceService {
       "runs_scored": 1,
       "extra_run":0
     }
-    let endpoint = "http://192.168.100.172/cricscore/public/save_runs";
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-    });
-    let options = new RequestOptions({ headers: headers});
-    return this.http.post(endpoint, params, options).pipe(map(response => {
+    console.log(params);
+    let endpoint = "http://192.168.100.172/cricscore/public/save_runs",
+        headers = new Headers({
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }),
+        options = new RequestOptions({ headers: headers});
+        
+    return this.http.post(endpoint, param, options).pipe(map(response => {
       result = response;
       return result;
     }));

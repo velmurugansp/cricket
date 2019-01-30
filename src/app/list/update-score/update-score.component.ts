@@ -11,6 +11,7 @@ import {MatchServiceService} from './../services/match-service.service'
 export class UpdateScoreComponent {
   
   public updateScoreForm: FormGroup;
+          resData;
   
   extras = [
     { id: 3, name: 'Wide' },
@@ -33,25 +34,35 @@ export class UpdateScoreComponent {
       wicket: [-1],
       fielder: []
     });
-
   }
-
+  
+  
+  myFunction(body){
+    this.MatchService.updateScoreService(body).subscribe(
+      res => { this.resData = res },
+      err => { console.log(err) }
+    );
+    console.log("hi");
+  }
   updateScore1(): void {
+
     let ballUpdate = {},
-        tournament_id = 1,
+        tournament_id = 4,
         match_id = 1,
         innings_no = 1,
         team_batting = 1,
-        team_bowling = 1,
-        strikerID = 1,
-        nonStrikerID = 1,
-        bowler = 1,
+        team_bowling = 3,
+        strikerID = 5,
+        nonStrikerID = 6,
+        bowler = 7,
         extraRun = 0,
         extraID = 0;
-    
+    13.25
+    14.99
+    11.80
     ballUpdate["tournament_id"] = tournament_id;
     ballUpdate["match_id"] = match_id;
-    ballUpdate["innings_no"] = innings_no;
+    ballUpdate["innings_no"] = innings_no; //
     ballUpdate["over_id"] = parseInt(this.updateScoreForm.value.over) +"."+ parseInt(this.updateScoreForm.value.ball);
     ballUpdate["ball_id"] = parseInt(this.updateScoreForm.value.ball);
     ballUpdate["striker"] = strikerID;
@@ -74,7 +85,8 @@ export class UpdateScoreComponent {
       }
 
       ballUpdate["wicket_type_id"] = parseInt(this.updateScoreForm.value.wicket);
-      ballUpdate["fielder_id"] = parseInt(this.updateScoreForm.value.fielder);
+      //ballUpdate["fielder_id"] = parseInt(this.updateScoreForm.value.fielder);
+      ballUpdate["fielder_id"] = bowler;
     }
 
     //Extra Calculation
@@ -84,9 +96,11 @@ export class UpdateScoreComponent {
       if(this.updateScoreForm.value.extras[3]){ //Byes
         extraRun += parseInt(this.updateScoreForm.value.run);
         extraID = 6;
+        ballUpdate["runs_scored"] =  0;
       } else if(this.updateScoreForm.value.extras[4]){ //Leg Byes
         extraRun += parseInt(this.updateScoreForm.value.run);
         extraID = 7;
+        ballUpdate["runs_scored"] =  0;
       }
       //wide || no ball
       if(this.updateScoreForm.value.extras[0]){ //Wide
@@ -101,21 +115,23 @@ export class UpdateScoreComponent {
       ballUpdate["extra_run"] = extraRun;
       ballUpdate["extra_id"] = extraID;
 
-      if(extraID==0){
-        console.error("Logical Error! Something wrong in extra id calculation");
+      if(extraID <= 2 || extraID >= 8){
+        console.error("Logical Error! Something wrong in extra id calculation. extraID= "+extraID);
       }
-    }    
+    }
 
     console.log(ballUpdate);
 
     //if wicket
     //if extra score
     //
-    //this.MatchService.updateScoreService(ballUpdate).subscribe(data=>{});
+    this.MatchService.updateScoreService(ballUpdate).subscribe(data=>{
+      console.log(data);
+    });
   }
 
   // ngOnInit() {
-  //   this.MatchService.updateScore().subscribe((result) => {
+  //   this.MatchService.updateScoreService(params).subscribe((result) => {
   //     console.log(result);  
   //   });
   // }
