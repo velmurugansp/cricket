@@ -13,15 +13,15 @@
   <ion-list>
     <ion-item *ngFor="let item of items">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.match_id}}
+      <p>{{item.team_1.team_name}} Vs {{item.team_2.team_name}}</p>
+      <p>{{item.tournament_id.tournament_name}}</p>
+      <p>Venue: {{item.venue_id.venue_name}}</p>
+      <div>
+        Result: {{(item.win_margin)?item.win_margin:((item.match_date | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM'))?"Match Ongoing":"Yet to be decided."}}
+      </div>
       <div class="item-note" slot="end">
-        {{item.match_date}}
+        {{item.match_date | date}}
       </div>
     </ion-item>
   </ion-list>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
 </ion-content>
