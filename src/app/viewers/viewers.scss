@@ -49,13 +49,12 @@
 }
 
 #viewersPage-header {
-  ion-navbar {
+  ion-toolbar {
     text-align: center;
   }
 }
 
-#viewersPage-content {
-  background: #222;
+ion-content {
 
   div.card * {
     color: #ffffff;
@@ -68,8 +67,10 @@
 
   div.card,
   div.batsmanScoreCard {
-    height: 25vh;
-    box-shadow: 0px 15px 10px -15px #111;
+    height: 30vh;
+    box-shadow: 0px 15px 10px -15px #222222;
+    background: transparent;
+    border: #666 1px solid;
 
     div.blurredImg {
       position: absolute;
@@ -77,14 +78,15 @@
       background-size: 100% 100%;
       filter: blur(2px);
       width: 100%;
-      height: 25vh;
-      z-index: -1;
+      height: 30vh;
+      z-index: 0;
     }
 
     ion-card-header {
+      background: transparent !important;
       font-size: 1em;
       text-align: center;
-      padding: 10px 5px;
+      padding: 1em;
     }
 
     ion-grid {
@@ -107,12 +109,16 @@
               padding: 5px;
             }
           }
-
-          ion-img {
+          ion-avatar {
+            display: inline-flex;
             background: #333333;
-            border: 2px #222222 solid;
-            border-radius: 50%;
+            ion-img {
+              box-sizing: border-box;
+              border: 2px #666 solid;
+              border-radius: 50%;
+            }
           }
+          
         }
 
         ion-col.teamScore-left {
@@ -148,12 +154,13 @@
           font-size: 1em;
           text-align: center;
           padding: 5px;
-          padding-top: 15px;
+          padding-top: 10px;
         }
       }
     }
 
     button.refreshTeamScore {
+      background: transparent;
       position: absolute;
       display: inline-block;
       font-size: 1.5em;
@@ -174,8 +181,8 @@
       background-size: 100% 100%;
       filter: blur(2px);
       width: 100%;
-      height: 25vh;
-      z-index: -1;
+      height: 30vh;
+      z-index: 0;
     }
 
     div.matchStatus {
@@ -201,33 +208,48 @@
     }
   }
 
-  ion-toolbar.toolbar-md {
-    min-height: auto;
-  }box-shadow:         3px 3px 5px 6px #ccc;
+  div#teamDataContainer {
+    background: #333333;
+    ion-toolbar {
+      background: #333333;
+      min-height: auto;
+      ion-segment {
+        ion-segment-button[checked], ion-segment-button.active {
+          background: #666666;
+          ion-label {
+            background: inherit;
+          }
+        }
+      }
+    }
+    
+  }
 
-  div#teamDataContainer div.teamScoreBoard {
+  div#teamDataContainer div#teamScoreBoard {
     ion-list {
+      padding: 0;
       ion-item.item-md {
-        background: #666666;
+        background: #333333;
 
         ion-label.label-md {
           margin: 10px;
+          background: inherit;
         }
       }
 
       table.battingDataTable,
       table.bowlingDataTable {
         width: calc(100vw - 0.1px);
-
+        background: #222;
         tbody {
           border: 1px solid #333;
           text-align: center;
 
-          tr:nth-child(even) {
+          tr:nth-child(even) td {
             background-color: #f2f2f2;
           }
 
-          tr:nth-child(odd) {
+          tr:nth-child(odd) td {
             background-color: #f8f9fa;
           }
 
@@ -241,7 +263,7 @@
               width: 25px;
             }
             td {
-              color: #222222;
+              color: #333;
             }
 
             th.playersName {
@@ -257,7 +279,8 @@
                 font-size: 0.7em;
                 padding: 3px;
                 padding-left: 0px;
-                color: #666666;
+                background: inherit;
+                color: inherit;
               }
             }
           }
