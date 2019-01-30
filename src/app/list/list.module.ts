@@ -22,7 +22,7 @@ import { UpdateScoreComponent } from './update-score/update-score.component';
         component: ListPage
       },
       {
-        path: 'update-score',
+        path: 'update-score/:id',
         component: UpdateScoreComponent
       }
     ])

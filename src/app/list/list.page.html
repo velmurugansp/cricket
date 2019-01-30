@@ -11,7 +11,7 @@
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let item of items">
+    <!-- <ion-item roterLink="/list/update-score" *ngFor="let item of items">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
       <p>{{item.team_1.team_name}} Vs {{item.team_2.team_name}}</p>
       <p>{{item.tournament_id.tournament_name}}</p>
@@ -22,6 +22,20 @@
       <div class="item-note" slot="end">
         {{item.match_date | date}}
       </div>
-    </ion-item>
+    </ion-item> -->
+    <ion-card  routerLink="/list/update-score/{{item.tournament_id.tournament_id}}_{{item.match_id}}" *ngFor="let item of items">
+      <ion-card-header>
+        <ion-card-subtitle>{{item.tournament_id.tournament_name}}</ion-card-subtitle>
+        <ion-card-title>{{item.tournament_id.tournament_name}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <p>Venue: {{item.venue_id.venue_name}}</p>
+        <p>
+          Result: {{(item.win_margin)?item.win_margin:((item.match_date | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM'))?"Match Ongoing":"Yet to be decided."}}
+        </p>
+        <p>{{item.match_date | date}}</p>
+      </ion-card-content>
+    </ion-card>
   </ion-list>
 </ion-content>
