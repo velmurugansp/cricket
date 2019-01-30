@@ -1,13 +1,9 @@
-<ion-header>
-  <ion-toolbar color="secondarydark">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Tournament Name
-    </ion-title>
+<ion-header id="viewersPage-header">
+  <ion-toolbar color="dark">
+    <ion-title>Tournent Name</ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content id="viewersPage-content">
   <div class="card">
@@ -20,7 +16,9 @@
             <div><span>55</span><span>-</span><span>5</span></div>
             <div>10.2 Overs</div>
           </div>
-          <ion-img src="../../assets/imgs/ipl-chennai-super-kings-logo.png" width="70" height="70"></ion-img>
+          <ion-avatar>
+            <ion-img src="../../assets/imgs/ipl-chennai-super-kings-logo.png" width="70" height="70"></ion-img>
+          </ion-avatar>
         </ion-col>
         <div class="circle-vs">VS</div>
         <ion-col class="teamScore-right">
@@ -28,16 +26,18 @@
             <div><span>00</span><span>-</span><span>0</span></div>
             <div>0.0 Overs</div>
           </div>
-          <ion-img src="../../assets/imgs/ipl-mumbai-indians-logo.png" width="70" height="70"></ion-img>
+          <ion-avatar>
+            <ion-img src="../../assets/imgs/ipl-mumbai-indians-logo.png" width="70" height="70"></ion-img>
+          </ion-avatar>
         </ion-col>
       </ion-row>
       <ion-row>
         <div class="tossStatus hide">Team A won the toss and elected to Bat</div>
         <div class="matchStatus">India needs 35 runs in 9 Balls to win</div>
       </ion-row>
-      <button class="refreshTeamScore ion-button icon-only button-clear button-clear-md">
+      <!-- <button class="refreshTeamScore ion-button icon-only button-clear button-clear-md">
         <ion-icon name="refresh-circle"></ion-icon>
-      </button>
+      </button>-->
     </ion-grid>
   </div>
 
@@ -48,9 +48,12 @@
       <ion-row id="teamScore">
         <ion-col class="teamScore-left">
           <div class="team-score">
-            <div>MS Dhoni</div><span>55/85</span>
+            <div>MS Dhoni</div>
+            <div>55/85</div>
           </div>
-          <ion-img src="../../assets/imgs/player_dhoni.jpg" width="70" height="70"></ion-img>
+          <ion-avatar>
+            <ion-img src="../../assets/imgs/player_dhoni.jpg" width="70" height="70"></ion-img>
+          </ion-avatar>
         </ion-col>
         <div class="circle-vs">VS</div>
         <ion-col class="teamScore-right">
@@ -58,7 +61,9 @@
             <div>Virath Kholi</div>
             <div>26/60</div>
           </div>
-          <ion-img src="../../assets/imgs/player_Kholi.jpg" width="70" height="70"></ion-img>
+          <ion-avatar>
+            <ion-img src="../../assets/imgs/player_Kholi.jpg" width="70" height="70"></ion-img>
+          </ion-avatar>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -77,17 +82,19 @@
   </div>
 
   <div class="card" id="teamDataContainer">
-      <ion-segment (ionChange)="segmentChanged($event)" class="teamDataHeader">
-        <ion-segment-button value="teamA">
-          <ion-label> Team A </ion-label>
+    <ion-toolbar no-border-top color="secondarydark">
+      <ion-segment (ionChange)="toggleScoreboard($event)" class="teamDataHeader">
+        <ion-segment-button value="teamA" class="teamA active">
+          <ion-label>Team A</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="teamB">
+        <ion-segment-button value="teamB" class="teamB">
           <ion-label>Team B</ion-label>
         </ion-segment-button>
       </ion-segment>
+    </ion-toolbar>
 
-    <!-- <div [ngSwitch]="teamData" class="teamScoreBoard">
-      <ion-list *ngSwitchCase="'teamA'">
+    <div id="teamScoreBoard">
+      <ion-list class="teamAScoreBoard">
         <table class="battingDataTable">
           <tbody>
             <tr class="tableHeader">
@@ -99,7 +106,8 @@
               <th>S/R</th>
             </tr>
             <tr>
-              <td class="playersName">Player 01 <div class="wicketInfo">c Dinesh Kumar, b Buvaneshwar Kumar</div></td>
+              <td class="playersName">Player 01 <div class="wicketInfo">c Dinesh Kumar, b Buvaneshwar Kumar</div>
+              </td>
               <td>100</td>
               <td>105</td>
               <td>10</td>
@@ -250,7 +258,7 @@
         </table>
       </ion-list>
 
-      <ion-list *ngSwitchCase="'teamB'">
+      <ion-list class="teamBScoreBoard hide">
         <table class="battingDataTable">
           <tbody>
             <tr class="tableHeader">
@@ -412,6 +420,6 @@
           </tbody>
         </table>
       </ion-list>
-    </div> -->
+    </div>
   </div>
 </ion-content>
