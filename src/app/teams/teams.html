@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Add Teams
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content id="TeamForm">
+    <form [formGroup]="TeamForm">
+        <ion-list>
+            <ion-card-content>
+                <ion-item>
+                    <ion-label stacked>*Team Name</ion-label>
+                    <ion-input formControlName="team_name" type="text" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label stacked>*City</ion-label>
+                    <ion-input formControlName="team_city" type="text" required></ion-input>
+                </ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-6>
+                            <button ion-button block icon-start color="primary" large (click)="createTeam()">
+                                <ion-icon name="log-in"></ion-icon>
+                                ADD TEAM
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <div *ngIf="!TeamForm.controls.team_name.valid " class="danger" padding>
+                    Please enter required fields.
+                </div>
+            </ion-card-content>
+        </ion-list>
+    </form>
+</ion-content>
+<ion-content>
+    <h2>Team List</h2>
+    <ion-list>
+        <li *ngFor="let team of teams">
+            <ion-card routerLink="/players/{{team.team_id}}">
+                <ion-card-header>
+                    <ion-card-subtitle>{{team.team_name}} - {{team.team_city}}</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+        </li>
+    </ion-list>
+</ion-content>

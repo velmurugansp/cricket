@@ -14,18 +14,26 @@ const routes: Routes = [
   {
     path: 'list',
     loadChildren: './list/list.module#ListPageModule'
-  },  
+  },
   {
     path: 'login',
     loadChildren: './login/login.module#LoginPageModule'
-  },  
+  },
   {
     path: 'sign-up',
     loadChildren: './signup/signup.module#SignupPageModule'
-  },  
+  },
   {
     path: 'viewers',
     loadChildren: './viewers/viewers.module#ViewersPageModule'
+  },
+  {
+    path: 'teams',
+    loadChildren: './teams/teams.module#TeamsPageModule'
+  },
+  {
+    path: 'players/:team_id',
+    loadChildren: './players/players.module#PlayersPageModule'
   }
 ];
 
@@ -33,4 +41,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

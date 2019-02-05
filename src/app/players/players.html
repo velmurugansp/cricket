@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Add Players
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <h2>Team Info</h2>
+    <ion-list>
+        <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle>{{teams.team_name}} - {{teams.team_city}}</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+    </ion-list>
+
+    <ion-col col-6>
+        <ion-button color="primary" large>
+            ADD PLAYERS
+        </ion-button>
+    </ion-col>
+
+</ion-content>
