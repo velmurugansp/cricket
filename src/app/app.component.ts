@@ -24,6 +24,11 @@ export class AppComponent {
       title: 'Teams',
       url: '/teams',
       icon: 'people'
+    },
+    {
+      title: 'Tournaments',
+      url: '/tournaments',
+      icon: 'tennisball'
     }
   ];
 

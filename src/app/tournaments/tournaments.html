@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Add Tournaments
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content id="TournamentForm">
+    <form [formGroup]="TournamentForm">
+        <ion-list>
+            <ion-card-content>
+                <ion-item>
+                    <ion-input formControlName="tournament_name" type="text" placeholder="*Tournament Name" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="overs_per_match" type="number" placeholder="*Overs Per Match" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="organaizer_name" type="text" placeholder="*Organaizer Name" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input formControlName="organaizer_number" type="number" placeholder="*Organaizer Number" required></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-datetime display-format="YYYY-MM-DD" formControlName="start_date" placeholder="*Start Date" required></ion-datetime>
+                    
+                </ion-item>
+                <ion-item>
+                    <ion-datetime display-format="YYYY-MM-DD" formControlName="end_date" placeholder="*End Date" required></ion-datetime>
+                    
+                </ion-item>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col col-6>
+                            <button ion-button block icon-start color="primary" large (click)="createTournament()">
+                                <ion-icon name="log-in"></ion-icon>
+                                ADD TOURNAMENT
+                            </button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+                <div *ngIf="!TournamentForm.controls.tournament_name.valid " class="danger" padding>
+                    Please enter required fields.
+                </div>
+            </ion-card-content>
+        </ion-list>
+    </form>
+</ion-content>
+<ion-content>
+    <h2>Tournament List</h2>
+    <ion-list>
+        <li *ngFor="let tournament of tournaments">
+            <ion-card routerLink="/players/{{tournament.tournament_id}}">
+                <ion-card-header>
+                    <ion-card-subtitle>{{tournament.tournament_name}} - {{tournament.organaizer_name}}</ion-card-subtitle>
+                </ion-card-header>
+            </ion-card>
+        </li>
+    </ion-list>
+</ion-content>

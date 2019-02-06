@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'add-players/:team_id',
     loadChildren: './addplayers/addplayers.module#AddPlayersPageModule'
+  },
+  {
+    path: 'tournaments',
+    loadChildren: './tournaments/tournaments.module#TournamentsPageModule'
   }
 ];
 
