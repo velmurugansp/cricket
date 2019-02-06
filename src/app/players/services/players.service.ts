@@ -13,7 +13,7 @@ export class PlayersService {
     constructor(private http: Http) { }
 
     fetchTeamById(teamId) {
-        let endpoint = Config.API_URL + '/team/' + teamId,
+        let endpoint = Config.API_URL + '/get_team_players/' + teamId,
             headers = new Headers({
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TeamService } from './services/teams.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Toast } from '@ionic-native/toast/ngx';
 /**
  * Generated class for the LoginPage page.
  *
@@ -16,7 +17,7 @@ export class TeamsPage {
     static readonly ERROR_MSG = "Please enter required fields";
     teams;
 
-    constructor(private TeamService: TeamService) { this.fetchTeam(); }
+    constructor(private TeamService: TeamService, private toast: Toast) { this.fetchTeam(); }
 
     TeamForm = new FormGroup({
         team_name: new FormControl('', Validators.required),
@@ -31,13 +32,19 @@ export class TeamsPage {
                     console.log(res);
                     if (res.json().status) {
                         console.log(res.json().message);
-                        this.refresh();
+                        this.toast.show(res.json().message, '5000', 'center').subscribe(
+                            toast => {
+                                console.log(toast);
+                            }
+                        );
+                        this.TeamForm.reset();
                     }
                 }, err => { console.log(err); }
             );
         } else {
             console.log(TeamsPage.ERROR_MSG);
         }
+
     }
 
     fetchTeam() {

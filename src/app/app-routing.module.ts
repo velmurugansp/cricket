@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'players/:team_id',
     loadChildren: './players/players.module#PlayersPageModule'
+  },
+  {
+    path: 'add-players/:team_id',
+    loadChildren: './addplayers/addplayers.module#AddPlayersPageModule'
   }
 ];
 

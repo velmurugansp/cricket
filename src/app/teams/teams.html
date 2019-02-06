@@ -13,25 +13,21 @@
         <ion-list>
             <ion-card-content>
                 <ion-item>
-                    <ion-label stacked>*Team Name</ion-label>
-                    <ion-input formControlName="team_name" type="text" required></ion-input>
+                    <ion-input placeholder="Team Name" formControlName="team_name" type="text" required></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label stacked>*City</ion-label>
-                    <ion-input formControlName="team_city" type="text" required></ion-input>
+                    <ion-input placeholder="City" formControlName="team_city" type="text" required></ion-input>
                 </ion-item>
                 <ion-grid>
                     <ion-row>
                         <ion-col col-6>
-                            <button ion-button block icon-start color="primary" large (click)="createTeam()">
-                                <ion-icon name="log-in"></ion-icon>
+                            <ion-button center block icon-start color="primary" large (click)="createTeam()">
                                 ADD TEAM
-                            </button>
+                            </ion-button>
                         </ion-col>
                     </ion-row>
                 </ion-grid>
                 <div *ngIf="!TeamForm.controls.team_name.valid " class="danger" padding>
-                    Please enter required fields.
                 </div>
             </ion-card-content>
         </ion-list>
