@@ -19,6 +19,12 @@ export class SignupPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
- 
 
+  SingupNewUser() {
+
+  }
+
+  Cancelsignup() {
+
+  }
 }

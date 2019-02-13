@@ -1,0 +1,206 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isEmptyObject()">
+      {{resData.team_1.team_name}} Vs {{resData.team_2.team_name}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content overflow-scroll="true" padding>
+  <ion-spinner *ngIf="resData.length == 0"></ion-spinner>
+  <form [formGroup]="updateScoreForm">
+    <ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Stiker</ion-label>
+            <ion-select formControlName="striker" placeholder="Select One">
+              <ion-select-option *ngFor="let player of team_1" value="{{player.player_id}}">{{player.player_name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-label>Non-stiker</ion-label>
+            <ion-select formControlName="non_striker" placeholder="Select One">
+              <ion-select-option *ngFor="let player of team_1" value="{{player.player_id}}">{{player.player_name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+    <ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label>Bowler</ion-label>
+            <ion-select formControlName="bowler" placeholder="Select One">
+              <ion-select-option *ngFor="let player of team_2" value="{{player.player_id}}">{{player.player_name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-label>Over</ion-label>
+            <ion-select formControlName="over" placeholder="Select One">
+              <ion-select-option *ngFor="let over of overs" value="{{over}}">{{over}}
+              </ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+    <div>
+      <h4>Ball</h4>
+      <ion-list>
+        <ion-radio-group [formControl]="updateScoreForm.controls['ball']">
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="1"></ion-radio>
+            <ion-label>1</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="2"></ion-radio>
+            <ion-label>2</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="3"></ion-radio>
+            <ion-label>3</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="4"></ion-radio>
+            <ion-label>4</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="5"></ion-radio>
+            <ion-label>5</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="6"></ion-radio>
+            <ion-label>6</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div>
+      <h4>Run</h4>
+      <ion-list>
+        <ion-radio-group [formControl]="updateScoreForm.controls['run']">
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="0"></ion-radio>
+            <ion-label>0</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="1"></ion-radio>
+            <ion-label>1</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="2"></ion-radio>
+            <ion-label>2</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="3"></ion-radio>
+            <ion-label>3</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="4"></ion-radio>
+            <ion-label>4</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="5"></ion-radio>
+            <ion-label>5</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="6"></ion-radio>
+            <ion-label>6</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="7"></ion-radio>
+            <ion-label>7</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="8"></ion-radio>
+            <ion-label>8</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="four"></ion-radio>
+            <ion-label>Four</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="six"></ion-radio>
+            <ion-label>Six</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div>
+      <h4>Extra</h4>
+      <ion-item class="inline-form-element" formArrayName="extras"
+        *ngFor="let extra of updateScoreForm.controls.extras.controls; let i = index">
+        <ion-checkbox color="secondary" value="0" [formControlName]="i"></ion-checkbox>
+        <ion-label>{{extras[i].name}}</ion-label>
+      </ion-item>
+    </div>
+    <div>
+      <h4>Wicket</h4>
+      <ion-list>
+        <ion-radio-group [formControl]="updateScoreForm.controls['wicket']">
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="1"></ion-radio>
+            <ion-label>Bowled</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="2"></ion-radio>
+            <ion-label>Caught</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="4"></ion-radio>
+            <ion-label>LBW</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="6"></ion-radio>
+            <ion-label>Stumped</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="5"></ion-radio>
+            <ion-label>Run out [Striker]</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="5a"></ion-radio>
+            <ion-label>Run out [Non-Striker]</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="3"></ion-radio>
+            <ion-label>Hit Wicket</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="7"></ion-radio>
+            <ion-label>Mankaded</ion-label>
+          </ion-item>
+          <ion-item class="inline-form-element">
+            <ion-radio color="secondary" value="-1"></ion-radio>
+            <ion-label>No</ion-label>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-list>
+        <ion-grid>
+          <ion-row>
+            <h2>Caught/Ran-out/Stumped by</h2>
+            <ion-col>
+              <ion-label>Fielder</ion-label>
+              <ion-select placeholder="Select One">
+                <ion-select-option *ngFor="let player of team_2" value="{{player.player_id}}">{{player.player_name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
+    </div>
+    <div>
+      <ion-button color="primary" expand="block" (click)="updateScore()">Update</ion-button>
+    </div>
+  </form>
+</ion-content>

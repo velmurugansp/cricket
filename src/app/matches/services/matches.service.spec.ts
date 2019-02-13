@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MatchServiceService } from './match-service.service';
+import { MatchServiceService } from './matches.service';
 
 describe('MatchServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

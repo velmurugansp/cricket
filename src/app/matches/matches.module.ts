@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 
-import { ListPage } from './list.page';
+import { MatchPage } from './matches.component';
 import { UpdateScoreComponent } from './update-score/update-score.component';
 
 @NgModule({
@@ -19,7 +19,7 @@ import { UpdateScoreComponent } from './update-score/update-score.component';
     RouterModule.forChild([
       {
         path: '',
-        component: ListPage
+        component: MatchPage
       },
       {
         path: 'update-score/:id',
@@ -27,6 +27,6 @@ import { UpdateScoreComponent } from './update-score/update-score.component';
       }
     ])
   ],
-  declarations: [ListPage, UpdateScoreComponent]
+  declarations: [MatchPage, UpdateScoreComponent]
 })
-export class ListPageModule {}
+export class MatchPageModule { }

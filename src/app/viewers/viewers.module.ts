@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { ViewersPage } from './viewers';
+import { ViewersPage } from './viewers.component';
 
 @NgModule({
   declarations: [
@@ -18,4 +18,4 @@ import { ViewersPage } from './viewers';
     ])
   ]
 })
-export class ViewersPageModule {}
+export class ViewersPageModule { }

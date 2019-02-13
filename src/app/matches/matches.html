@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Matches
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card routerLink="/matches/update-score/{{item.tournament_id.tournament_id}}_{{item.match_id}}"
+      *ngFor="let item of items">
+      <ion-card-header>
+        <ion-card-subtitle text-center>{{item.team_1.team_name}}</ion-card-subtitle>
+        <div text-center> Vs </div>
+        <ion-card-subtitle text-center>{{item.team_2.team_name}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p>Venue: {{item.venue_id.venue_name}}</p>
+        <p>
+          Result:
+          {{(item.win_margin)?item.win_margin:((item.match_date | date:'EEEE d MMMM') == (today | date:'EEEE d MMMM'))?"Match Ongoing":"Yet to be decided."}}
+        </p>
+        <p>{{item.match_date | date}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>
