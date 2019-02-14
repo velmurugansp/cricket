@@ -16,7 +16,8 @@ export class UpdateScoreComponent {
   team_1: any;
   team_2: any;
   overs = [];
-  resData = {};
+  resData: any = {};
+
   extras = [
     { id: 3, name: 'Wide' },
     { id: 4, name: 'No Ball' },
@@ -30,6 +31,7 @@ export class UpdateScoreComponent {
   team_bowling: number;
   match_id: number;
   tournament_id: number;
+  toss_winner: number;
   batting_team_players = [];
   bowlig_team_players = [];
 
@@ -55,7 +57,7 @@ export class UpdateScoreComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.paramvalue = params.id.split("_");
+      this.paramvalue = params.id.split('_');
       this.tournament_id = this.paramvalue[0];
       this.match_id = this.paramvalue[1];
     });
@@ -72,6 +74,7 @@ export class UpdateScoreComponent {
       this.MatchService.getMatchDetails(this.match_id).subscribe(
         res => {
           if (res.json().status) {
+            console.log(res.json().content);
             this.resData = res.json().content;
             resolve(res.json().content);
           }
@@ -94,22 +97,23 @@ export class UpdateScoreComponent {
 
   team1_players(): any {
     this.getMatchDetails()
-      .then((result) => {
+      .then((result: any) => {
         return this.getPlayersByTeam(result.team_1.team_id);
       }, this.errHandler)
       .then((data) => {
-        return this.team_1 = data;
+        console.log(data);
+        this.team_1 = data;
       }, this.errHandler);
   }
 
   team2_players(): any {
     this.getMatchDetails()
-      .then((result) => {
+      .then((result: any) => {
         return this.getPlayersByTeam(result.team_2.team_id);
       }, this.errHandler)
       .then((data) => {
         this.getOvers();
-        return this.team_2 = data;
+        this.team_2 = data;
       }, this.errHandler);
   }
 
@@ -139,33 +143,33 @@ export class UpdateScoreComponent {
       extraRun = 0,
       extraID = 0;
 
-    ballUpdate["tournament_id"] = this.tournament_id;
-    ballUpdate["match_id"] = this.match_id;
-    ballUpdate["innings_no"] = innings_no;
-    ballUpdate["over_id"] = parseInt(this.updateScoreForm.value.over) + "." + parseInt(this.updateScoreForm.value.ball);
-    ballUpdate["ball_id"] = parseInt(this.updateScoreForm.value.ball);
-    ballUpdate["striker"] = parseInt(this.updateScoreForm.value.striker);
-    ballUpdate["non_striker"] = parseInt(this.updateScoreForm.value.non_striker);
-    ballUpdate["bowler"] = parseInt(this.updateScoreForm.value.bowler);
-    ballUpdate["team_batting"] = this.team_batting;
-    ballUpdate["team_bowling"] = this.team_bowling;
-    ballUpdate["runs_scored"] = parseInt(this.updateScoreForm.value.run);
+    ballUpdate['tournament_id'] = this.tournament_id;
+    ballUpdate['match_id'] = this.match_id;
+    ballUpdate['innings_no'] = innings_no;
+    ballUpdate['over_id'] = parseInt(this.updateScoreForm.value.over) + '.' + parseInt(this.updateScoreForm.value.ball);
+    ballUpdate['ball_id'] = parseInt(this.updateScoreForm.value.ball);
+    ballUpdate['striker'] = parseInt(this.updateScoreForm.value.striker);
+    ballUpdate['non_striker'] = parseInt(this.updateScoreForm.value.non_striker);
+    ballUpdate['bowler'] = parseInt(this.updateScoreForm.value.bowler);
+    ballUpdate['team_batting'] = this.team_batting;
+    ballUpdate['team_bowling'] = this.team_bowling;
+    ballUpdate['runs_scored'] = parseInt(this.updateScoreForm.value.run);
 
     //Wicket Details
     if (this.updateScoreForm.value.wicket != -1) {
       console.log('It is a wicket');
 
       //wicket_batsman_id
-      if (this.updateScoreForm.value.wicket != "5a") {
-        ballUpdate["wicket_batsman_id"] = strikerID;
+      if (this.updateScoreForm.value.wicket != '5a') {
+        ballUpdate['wicket_batsman_id'] = strikerID;
       } else {
-        ballUpdate["wicket_batsman_id"] = nonStrikerID;
-        ballUpdate["wicket_type_id"] = 5;
+        ballUpdate['wicket_batsman_id'] = nonStrikerID;
+        ballUpdate['wicket_type_id'] = 5;
       }
 
-      ballUpdate["wicket_type_id"] = parseInt(this.updateScoreForm.value.wicket);
-      //ballUpdate["fielder_id"] = parseInt(this.updateScoreForm.value.fielder);
-      ballUpdate["fielder_id"] = bowler;
+      ballUpdate['wicket_type_id'] = parseInt(this.updateScoreForm.value.wicket);
+      //ballUpdate['fielder_id'] = parseInt(this.updateScoreForm.value.fielder);
+      ballUpdate['fielder_id'] = bowler;
     }
 
     //Extra Calculation
@@ -175,11 +179,11 @@ export class UpdateScoreComponent {
       if (this.updateScoreForm.value.extras[3]) { //Byes
         extraRun += parseInt(this.updateScoreForm.value.run);
         extraID = 6;
-        ballUpdate["runs_scored"] = 0;
+        ballUpdate['runs_scored'] = 0;
       } else if (this.updateScoreForm.value.extras[4]) { //Leg Byes
         extraRun += parseInt(this.updateScoreForm.value.run);
         extraID = 7;
-        ballUpdate["runs_scored"] = 0;
+        ballUpdate['runs_scored'] = 0;
       }
       //wide || no ball
       if (this.updateScoreForm.value.extras[0]) { //Wide
@@ -191,11 +195,11 @@ export class UpdateScoreComponent {
       } else if (this.updateScoreForm.value.extras[2]) { //Free Hit
         extraID = 5;
       }
-      ballUpdate["extra_run"] = extraRun;
-      ballUpdate["extra_id"] = extraID;
+      ballUpdate['extra_run'] = extraRun;
+      ballUpdate['extra_id'] = extraID;
 
       if (extraID <= 2 || extraID >= 8) {
-        console.error("Logical Error! Something wrong in extra id calculation. extraID= " + extraID);
+        console.error('Logical Error! Something wrong in extra id calculation. extraID= ' + extraID);
       }
     }
 

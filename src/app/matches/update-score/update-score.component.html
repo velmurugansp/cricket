@@ -136,8 +136,7 @@
     </div>
     <div>
       <h4>Extra</h4>
-      <ion-item class="inline-form-element" formArrayName="extras"
-        *ngFor="let extra of updateScoreForm.controls.extras.controls; let i = index">
+      <ion-item class="inline-form-element" formArrayName="extras" *ngFor="let extra of extras; let i = index">
         <ion-checkbox color="secondary" value="0" [formControlName]="i"></ion-checkbox>
         <ion-label>{{extras[i].name}}</ion-label>
       </ion-item>

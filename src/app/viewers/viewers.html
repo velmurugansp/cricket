@@ -1,6 +1,8 @@
 <ion-header id="viewersPage-header">
   <ion-toolbar color="dark">
-    <ion-title>Tournent Name</ion-title>
+    <ion-title *ngIf="!isEmptyObject()">
+      {{response.tournament.tournament_name}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,13 +10,13 @@
 <ion-content id="viewersPage-content">
   <div class="card">
     <div class="blurredImg"></div>
-    <ion-card-header>Stadium Name</ion-card-header>
+    <ion-card-header>{{response.venue}}</ion-card-header>
     <ion-grid>
       <ion-row id="teamScore">
         <ion-col class="teamScore-left">
           <div class="team-score">
-            <div><span>55</span><span>-</span><span>5</span></div>
-            <div>10.2 Overs</div>
+            <div><span>{{innings1.total_score}}</span><span>-</span><span>{{innings1.wicket}}</span></div>
+            <div>{{innings1.overs}} Overs</div>
           </div>
           <ion-avatar>
             <ion-img src="../../assets/imgs/ipl-chennai-super-kings-logo.png" width="70" height="70"></ion-img>
@@ -48,7 +50,7 @@
       <ion-row id="teamScore">
         <ion-col class="teamScore-left">
           <div class="team-score">
-            <div>MS Dhoni</div>
+            <div *ngIf="!isEmptyObject()">{{innings1.striker.player_name}}</div>
             <div>55/85</div>
           </div>
           <ion-avatar>
@@ -58,7 +60,7 @@
         <div class="circle-vs">VS</div>
         <ion-col class="teamScore-right">
           <div class="team-score">
-            <div>Virath Kholi</div>
+            <div *ngIf="!isEmptyObject()">{{innings1.non_striker.player_name}}</div>
             <div>26/60</div>
           </div>
           <ion-avatar>
@@ -85,10 +87,10 @@
     <ion-toolbar no-border-top color="secondarydark">
       <ion-segment (ionChange)="toggleScoreboard($event)" class="teamDataHeader">
         <ion-segment-button value="teamA" class="teamA active">
-          <ion-label>Team A</ion-label>
+          <ion-label *ngIf="!isEmptyObject()">{{innings1.team_batting.team_name}}</ion-label>
         </ion-segment-button>
         <ion-segment-button value="teamB" class="teamB">
-          <ion-label>Team B</ion-label>
+          <ion-label *ngIf="!isEmptyObject()">{{innings1.team_bowling.team_name}}</ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-toolbar>
@@ -105,94 +107,17 @@
               <th>6s</th>
               <th>S/R</th>
             </tr>
-            <tr>
-              <td class="playersName">Player 01 <div class="wicketInfo">c Dinesh Kumar, b Buvaneshwar Kumar</div>
+
+            <tr *ngFor="let player of innings1_players">
+              <td class="playersName">{{player.player_name}}
+                <!--<div class="wicketInfo">c Dinesh Kumar, b Buvaneshwar Kumar
+                </div>-->
               </td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 02</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 03</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 04</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 05</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 06</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 07</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 08</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 09</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 10</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 11</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
+              <td>{{player.score}}</td>
+              <td>{{player.ball_count}}</td>
+              <td>{{player.fours_count}}</td>
+              <td>{{player.sixes_count}}</td>
+              <td>{{player.score / player.ball_count | number: '2.2-2'}}</td>
             </tr>
           </tbody>
         </table>
@@ -201,58 +126,17 @@
             <tr class="tableHeader">
               <th class="playersName">Bowling</th>
               <th>O </th>
-              <th>M </th>
               <th>R </th>
               <th>W</th>
               <th>Eco</th>
             </tr>
-            <tr>
-              <td class="playersName">Bowler 01</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 02</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 03</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 04</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 05</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 06</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
+            <tr *ngFor="let player of innings1_bowlers">
+              <td class="playersName">{{player.player_name}}
+              </td>
+              <td>{{player.over_count}}</td>
+              <td>{{player.score}}</td>
+              <td>{{player.wickets}}</td>
+              <td>95.23</td>
             </tr>
           </tbody>
         </table>
@@ -269,93 +153,16 @@
               <th>6s</th>
               <th>S/R</th>
             </tr>
-            <tr>
-              <td class="playersName">Player 01</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 02</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 03</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 04</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 05</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 06</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 07</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 08</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 09</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 10</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
-            </tr>
-            <tr>
-              <td class="playersName">Player 11</td>
-              <td>100</td>
-              <td>105</td>
-              <td>10</td>
-              <td>6</td>
-              <td>95.23</td>
+            <tr *ngFor="let player of innings2_players">
+              <td class="playersName">{{player.player_name}}
+                <!--<div class="wicketInfo">c Dinesh Kumar, b Buvaneshwar Kumar
+                  </div>-->
+              </td>
+              <td>{{player.score}}</td>
+              <td>{{player.ball_count}}</td>
+              <td>{{player.fours_count}}</td>
+              <td>{{player.sixes_count}}</td>
+              <td>{{player.score / player.ball_count | number: '2.2-2'}}</td>
             </tr>
           </tbody>
         </table>
@@ -369,53 +176,13 @@
               <th>W</th>
               <th>Eco</th>
             </tr>
-            <tr>
-              <td class="playersName">Bowler 01</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 02</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 03</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 04</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 05</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
-            </tr>
-            <tr>
-              <td class="playersName">Bowler 06</td>
-              <td>10.0</td>
-              <td>1</td>
-              <td>46</td>
-              <td>2</td>
-              <td>4.60</td>
+            <tr *ngFor="let player of innings2_bowlers">
+              <td class="playersName">{{player.player_name}}
+              </td>
+              <td>{{player.over_count}}</td>
+              <td>{{player.score}}</td>
+              <td>{{player.wickets}}</td>
+              <td>95.23</td>
             </tr>
           </tbody>
         </table>
